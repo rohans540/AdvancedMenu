@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles.css";
 
 const Navitem = (props) => {
+  const [open, setOpen] = useState(false);
   return (
-    <li className="nav-item">
-      <a href="#" className="icon-button">
-        {props.icon}
-      </a>
-    </li>
+    <div className={props.navClass}>
+      <li className="nav-item">
+        <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+          {props.icon}
+        </a>
+        {open && props.children}
+      </li>
+    </div>
   );
 };
 
